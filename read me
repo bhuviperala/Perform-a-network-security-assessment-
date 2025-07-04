@@ -1,0 +1,46 @@
+network-security-assessment/
+├── nmap_results.txt
+├── wireshark_capture.pcap
+└── network_security_assessment.md
+
+
+Step 1: Nmap Network Scan
+Run an Nmap scan on your local/test network:
+nmap -A -T4 192.168.1.0/24 -oN nmap_results.txt
+
+# Network Security Assessment Report
+
+**Date**: July 4, 2025  
+**Assessor**: [P bhuvaneshwari]  
+**Tools Used**: Nmap, Wireshark
+
+---
+
+## 1. Objective
+
+The goal of this assessment is to identify potential security vulnerabilities in a local/test network through active and passive reconnaissance techniques using Nmap and Wireshark.
+
+---
+
+## 2. Nmap Scan Summary
+
+### Command Used:
+
+```bash
+nmap -A -T4 192.168.1.0/24
+
+
+
+
+git init
+git add .
+git commit -m "Initial network security assessment upload"
+git remote add origin https://github.com/yourusername/network-security-assessment.git
+git push -u origin master
+
+
+ Conclusion
+The assessment reveals several exploitable weaknesses in the test network. Immediate actions should be taken to secure exposed services and monitor for suspicious activity.
+
+
+
