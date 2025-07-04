@@ -1,0 +1,52 @@
+import os
+import subprocess
+from datetime import datetime
+
+# === Configuration ===
+network_range = "192.168.1.0/24"
+interface = "eth0"  # Change this to your Wi-Fi or Ethernet interface
+nmap_output = "nmap_results.txt"
+pcap_output = "wireshark_capture.pcap"
+report_output = "network_security_assessment.md"
+
+# === Run Nmap Scan ===
+print("[*] Running Nmap Scan...")
+nmap_cmd = f"nmap -A -T4 {network_range} -oN {nmap_output}"
+os.system(nmap_cmd)
+
+# === Run Tshark Capture (Wireshark CLI) ===
+print("[*] Capturing traffic with Wireshark (Tshark)...")
+print("    Capturing for 30 seconds...")
+
+tshark_cmd = f"tshark -i {interface} -a duration:30 -w {pcap_output}"
+subprocess.run(tshark_cmd, shell=True)
+
+# === Generate Markdown Report ===
+print("[*] Generating Markdown Report...")
+
+report = f"""# Network Security Assessment Report
+
+**Date**: {datetime.now().strftime('%Y-%m-%d')}  
+**Assessor**: Automated Script  
+**Tools Used**: Nmap, Wireshark (Tshark)
+
+---
+
+## 1. Objective
+
+Identify potential security vulnerabilities in a local/test network using Nmap and Wireshark.
+
+---
+
+## 2. Nmap Scan Summary
+
+**Network Scanned**: `{network_range}`  
+**Command Used**:
+```bash
+{nmap_cmd}
+
+
+3. Wireshark Analysis Summary
+Captured Interface: {interface}
+Duration: 30 seconds
+Output File: {pcap_output}
